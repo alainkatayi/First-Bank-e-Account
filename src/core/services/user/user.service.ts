@@ -4,6 +4,7 @@ import { environment } from '../../../environnemnt/env';
 import { UserPagination } from '../../models/pagination';
 import { LoginService } from '../login/login.service';
 import { Observable } from 'rxjs';
+import { User } from '../../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,10 @@ export class UserService {
       .set('page', page.toString())
       .set('page_size', page_size.toString())
   return this.http.get<UserPagination>(`${this.apiUrl}accounts/index`, {params, headers})
+  }
+
+  createUser(data:FormData):Observable<User>{
+    const headers = this.stock_user_service.getAuthHeaders()
+        return this.http.post<User>(this.apiUrl +'accounts/register/', data, {headers})
   }
 }
