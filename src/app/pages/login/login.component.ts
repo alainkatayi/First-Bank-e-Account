@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  imports: [CommonModule,ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
@@ -24,19 +24,19 @@ export class LoginComponent {
   private router = inject(Router);
 
 
-  constructor(private fb: FormBuilder, private loginService: LoginService, private local_storage: LoginService){
+  constructor(private fb: FormBuilder, private loginService: LoginService, private local_storage: LoginService) {
     this.loginForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
   }
 
-  onSubmit(){
-    if(this.loginForm.valid){
+  onSubmit() {
+    if (this.loginForm.valid) {
       this.is_connecting = true
       const data = this.loginForm.value
       this.loginService.login(data).subscribe({
-        next:(response) =>{
+        next: (response) => {
           this.local_storage.store_user_local(response)
           this.is_connecting = false
           this.show_toast = true
@@ -44,7 +44,11 @@ export class LoginComponent {
           this.toastMessage = 'Connexion réussie'
           setTimeout(() => {
             this.show_toast = false
-            this.router.navigate(['/'])
+            if (response.user && response.user.role === 'admin') {
+              this.router.navigate(['/admin/layout']);
+            } else {
+              this.router.navigate(['/request']);
+            }
           }, 2000)
         },
         error: (error) => {
@@ -57,7 +61,7 @@ export class LoginComponent {
             this.show_toast = false
           }, 2000)
         }
-        
+
 
       })
     }
