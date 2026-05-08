@@ -1,0 +1,57 @@
+<aside class="w-64 bg-[#001529] text-white flex flex-col shadow-xl">
+  <!-- Logo Section -->
+  <div class="p-6 border-b border-gray-700 flex items-center space-x-3">
+    <a routerLink="/dashboard" class="flex items-center">
+      <img src="assets/images/fbnlogo.png" alt="FIRST BANK DRC"
+        class="h-8 w-auto object-contain hover:opacity-90 transition-opacity">
+    </a>ADMIN
+  </div>
+
+  <!-- Navigation Links -->
+  <nav class="flex-1 px-4 py-6 space-y-2">
+    <a href="#"
+      class="flex items-center space-x-3 px-4 py-3 bg-yellow-600 text-[#001529] rounded-lg font-bold transition-all">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+      <span>Toutes les Demandes </span>
+    </a>
+
+    <a href="admin/user"
+      class="flex items-center space-x-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition-all group">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:text-yellow-600" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 01-9-3.812" />
+      </svg>
+      <span>Liste des Agents</span>
+    </a>
+
+    <a href="#"
+      class="flex items-center space-x-3 px-4 py-3 text-gray-400 hover:bg-gray-800 hover:text-white rounded-lg transition-all group">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 group-hover:text-yellow-600" fill="none"
+        viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      <span>Documents Clients</span>
+    </a>
+  </nav>
+
+  <!-- Admin Footer -->
+  <div class="p-4 border-t border-gray-700">
+    <div class="items-center space-x-4">
+      <span class="text-sm text-yellow-600 italic">Session Administrateur : <strong> {{username}} </strong></span>
+      <span class="text-sm text-gray-300 italic"><strong> {{email}} </strong></span>
+    </div>
+    <button (click)="logOut()"
+      class="w-full flex items-center justify-center space-x-2 bg-red-900/30 hover:bg-red-900/50 text-red-400 py-2 rounded-lg text-sm transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+      </svg>
+      <span>Déconnexion Admin</span>
+    </button>
+  </div>
+</aside>

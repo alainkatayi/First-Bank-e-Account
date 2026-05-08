@@ -2,11 +2,15 @@
   <div class="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
 
 
-    <div class="text-center mb-10">
-      <h2 class="text-3xl font-extrabold text-[#001529] tracking-tighter">
-        FIRST BANK
-      </h2>
-    </div>
+<div class="flex justify-center mb-10">
+    <a routerLink="/dashboard" class="flex items-center justify-center">
+        <img 
+            src="assets/images/fbnlogo.png" 
+            alt="FIRST BANK DRC" 
+            class="h-15 w-auto object-contain hover:opacity-90 transition-opacity"
+        >
+    </a>
+</div>
 
 
     <form class="space-y-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
