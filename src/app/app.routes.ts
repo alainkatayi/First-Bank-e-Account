@@ -12,6 +12,11 @@ export const routes: Routes = [
         loadComponent: () => import('./pages/requests-list/requests-list.component').then(m => m.RequestsListComponent)
     },
     {
+        path: 'request-details/:id',
+        title: 'Request Details',
+        loadComponent: () => import('./pages/request-detail/request-detail.component').then(m => m.RequestDetailComponent)
+    },
+    {
         path: 'admin/layout',
         title: 'Layout',
         loadComponent: () => import('./pages/admin-layout/admin-layout.component').then(m => m.AdminLayoutComponent)

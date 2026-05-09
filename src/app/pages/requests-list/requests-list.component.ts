@@ -4,10 +4,11 @@ import { Request } from '../../../core/models/request';
 import { environment } from '../../../environnemnt/env';
 import { RequestService } from '../../../core/services/request/request.service';
 import { NavbarComponent } from "../../components/navbar/navbar.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-requests-list',
-  imports: [CommonModule, NavbarComponent],
+  imports: [CommonModule, NavbarComponent,RouterLink],
   templateUrl: './requests-list.component.html',
   styleUrl: './requests-list.component.css'
 })
