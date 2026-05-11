@@ -5,6 +5,7 @@ import { LoginService } from '../login/login.service';
 import { Observable } from 'rxjs';
 import { RequestPagination } from '../../models/pagination';
 import { Request } from '../../models/request';
+import { Decision } from '../../models/decision';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +24,10 @@ export class RequestService {
   loadRequestById(id:number):Observable<Request>{
     const headers = this.stock_user_service.getAuthHeaders()
     return this.http.get<Request>(`${this.apiUrl}request/${id}`, {headers})
+  }
+
+  requestDecision(requestId:number, decisionData:{decision_type: string, motivation: string}):Observable<Decision>{
+    const headers = this.stock_user_service.getAuthHeaders()
+    return this.http.post<Decision>(`${this.apiUrl}request/${requestId}/decision`,decisionData ,{headers})
   }
 }
