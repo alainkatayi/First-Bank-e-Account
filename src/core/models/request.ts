@@ -19,5 +19,5 @@ export interface Request{
     status_display : string,
     created_at : string,
     updated_at : string
-    document: Document
+    document: Document[]
 }

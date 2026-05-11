@@ -1,0 +1,172 @@
+<app-navbar></app-navbar>
+<div class="p-8 bg-gray-100 min-h-screen font-sans">
+    <!-- Fil d'Ariane -->
+    <button class="flex items-center text-gray-500 hover:text-[#001529] mb-6 transition-colors font-semibold">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Retour à la liste des demandes
+    </button>
+
+    <div class="max-w-7xl mx-auto space-y-6">
+
+        <!-- HEADER : État Civil & Statut -->
+        <div
+            class="bg-white rounded-2xl p-8 shadow-sm flex flex-col md:flex-row justify-between items-center border border-gray-100">
+            <div class="flex items-center space-x-6">
+                <div class="relative">
+                    <div
+                        class="w-20 h-20 bg-linear-to-tr from-[#001529]  text-white rounded-2xl flex items-center justify-center text-3xl font-extrabold shadow-lg">
+                        <img [src]="url + request.document[0].file_url" alt="Scan Document"
+                            class="w-full h-full object-cover shadow-2xl transition-transform duration-500 group-hover:scale-110 rounded-2xl">
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-3xl font-black text-[#001529] tracking-tight"> {{request.name}}
+                        {{request.last_name}} {{request.first_name}} </h1>
+                    <div class="flex items-center space-x-3 mt-1">
+                        <span class="h-1 w-1 bg-gray-300 rounded-full"></span>
+                        <span class="text-blue-600 font-bold text-sm"> {{request.profession}} </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 md:mt-0 flex flex-col items-end">
+                <span
+                    class="bg-green-100 text-green-700 px-6 py-2 rounded-full font-black text-xs uppercase tracking-widest border"
+                    [ngClass]="{
+                  'bg-yellow-100 text-yellow-700': request.status === 'PENDING',
+                  'bg-green-100 text-green-700': request.status === 'approved',
+                  'bg-red-100 text-red-700': request.status === 'rejected'
+                }">
+                    {{request.status}}
+                </span>
+                <p class="text-[10px] text-gray-400 mt-2 font-bold uppercase tracking-tighter"> Date de soumission:
+                    {{request.created_at |date:'dd/MM/yyyy'}} </p>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT : Infos vs Document -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- GAUCHE : DATA (5 cols) -->
+            <div class="lg:col-span-5 space-y-6">
+                <!-- Infos Personnelles -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+                    <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                        <h2 class="text-[#001529] font-black uppercase text-xs tracking-widest">Informations Client</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor font-bold">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                        </svg>
+                    </div>
+                    <div class="p-6 grid grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Naissance</p>
+                            <p class="text-sm font-bold text-gray-800 italic"> {{request.date_of_birth}} </p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Genre</p>
+                            <p class="text-sm font-bold text-gray-800"> {{request.genre}} </p>
+                        </div>
+                        <div class="col-span-2">
+                            <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Contact</p>
+                            <p class="text-sm font-bold text-gray-800"> {{request.telephone_number}} </p>
+                            <p class="text-sm font-medium text-blue-600 underline"> {{request.email}} </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adresse -->
+                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border border-gray-100">
+                    <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                        <h2 class="text-[#001529] font-black uppercase text-xs tracking-widest">Localisation</h2>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-400" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor font-bold">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <div>
+                            <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Commune & Quartier</p>
+                            <p class="text-sm font-bold text-gray-800"> {{request.commune}} {{request.quarter}} </p>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black text-gray-400 uppercase mb-1">Adresse Physique</p>
+                            <p class="text-sm font-bold text-gray-800"> {{request.house_number}},
+                                {{request.street_name}} </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions Décisives -->
+                <div class="bg-[#001529] rounded-2xl p-6 shadow-xl shadow-blue-900/20 text-white">
+                    <h3 class="text-xs font-black uppercase tracking-widest mb-6 flex items-center">
+                        <span class="w-2 h-2 bg-yellow-500 rounded-full mr-2 animate-pulse"></span>
+                        Décision
+                    </h3>
+
+                    <div class="flex flex-col space-y-4">
+                        <!-- Bouton Valider -->
+                        <button
+                            class="w-full bg-green-600 hover:bg-green-500 text-white font-black py-4 rounded-xl transition-all uppercase text-xs tracking-widest flex items-center justify-center space-x-2 shadow-lg shadow-green-900/20 group">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 group-hover:scale-110 transition-transform" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span>Valider la demande</span>
+                        </button>
+
+                        <!-- Bouton Rejeter -->
+                        <button
+                            class="w-full bg-transparent hover:bg-red-600 text-red-500 hover:text-white font-bold py-4 rounded-xl transition-all text-xs tracking-widest border border-red-600/40 hover:border-red-600 flex items-center justify-center space-x-2 group">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 group-hover:rotate-12 transition-transform" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span>Rejeter la demande</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DROITE : PREVIEW DOCUMENT (7 cols) -->
+            <div class="lg:col-span-7">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 h-full flex flex-col">
+                    <div class="bg-gray-50 px-6 py-4 border-b border-gray-100 flex items-center justify-between">
+                        <h2 class="text-[#001529] font-black uppercase text-xs tracking-widest">
+                            Pièce d'Identité Jointe
+                        </h2>
+                    </div>
+
+                    <!-- LA VUE DU DOCUMENT -->
+                    <div class="flex-1 p-6 bg-gray-200/50">
+                        <div
+                            class="w-full h-full min-h-125 bg-white rounded-xl shadow-inner flex items-center justify-center overflow-hidden border-2 border-dashed border-gray-300 relative group">
+
+                            <!-- On utilise w-full h-full et object-cover -->
+                            <img [src]="url + request.document[0].file_url" alt="Scan Document"
+                                class="w-full h-full object-cover shadow-2xl transition-transform duration-500 group-hover:scale-110">
+
+                            <!-- Overlay optionnel pour le nom du fichier -->
+                            <div
+                                class="absolute bottom-4 left-4 bg-[#001529]/80 backdrop-blur-md text-white px-3 py-1.5 rounded-lg text-[10px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                                Vue immersive
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
