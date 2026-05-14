@@ -1,59 +1,38 @@
-# FirstBankEAccountFront
+# 🏦 Bank Self-Boarding Frontend (Angular)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+Ce projet est l'interface utilisateur (SPA) de l'application de self-boarding bancaire. Il permet aux prospects de soumettre leur dossier et aux agents/administrateurs de traiter les demandes via un tableau de bord premium.
 
-## Development server
+## 🎨 Design & UX
+*   **Framework CSS :** Tailwind CSS
+*   **Style :** Industriel, moderne, typographie "Extra-Bold" et contrastes élevés.
+*   **Navigation Adaptive :** 
+    *   **Agent :** Navigation horizontale (Navbar) pour maximiser l'espace de lecture des documents.
+    *   **Admin :** Sidebar latérale fixe et immobile pour une gestion rapide des flux.
+*   **Animations :** Transitions fluides via Tailwind `animate-in`.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
-```
+## 🚀 Installation & Lancement
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### 1. Prérequis
+*   Node.js (v18+)
+*   Angular CLI (`npm install -g @angular/cli`)
 
-## Code scaffolding
+### 2. Cloner et Installer
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+* git clone <url-du-repo>
+* cd bank-boarding-frontend
+* npm install
 
-```bash
-ng generate component component-name
-```
+## Configuration du fichier d'environnement
+* Dans le dossier Src, creer le dossier environnement
+* Puis dans le dossier environnement, creer le fichier: env.ts
+* Dans le fichier env.ts, ajoute la variable:
+  
+**export const environment = {
+    production: false,
+    apiUrl: 'http://localhost:8000/api/',
+    url: 'http://localhost:8000/',
+    url_img: 'http://localhost:8000',
+}; **
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
